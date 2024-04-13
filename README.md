@@ -1,3 +1,9 @@
 # FireDocker
 
-this is the readme
+##Discription
+
+##How to Clone
+
+##How to build/deploy
+
+##Fuctionality
