@@ -1,9 +1,9 @@
 # FireDocker
 
-##Discription
+## Discription
 
-##How to Clone
+## How to Clone
 
-##How to build/deploy
+## How to build/deploy
 
-##Fuctionality
+## Fuctionality
