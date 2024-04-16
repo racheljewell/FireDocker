@@ -12,6 +12,7 @@ git rm --cache <filename>
 
 """
 
+
 def create_func(filepath):
     json_string = "{}"
     try:
@@ -29,6 +30,10 @@ def main():
     parser = argparse.ArgumentParser(description='Example script with multiple required arguments')
     
     parser.add_argument('--create', help='Create something with JSON file', metavar='JSON_PATH') # Requires JSON path
+    parser.add_argument('--start', help='Start a Docker container', metavar='CONTAINER_NAME')
+    parser.add_argument('--stop', help='Stop a Docker container by name', metavar='CONTAINER_NAME')
+    parser.add_argument('--rename', help='Rename a Docker container', nargs=2, metavar=('OLD_NAME', 'NEW_NAME'))
+    parser.add_argument('--delete', help='Delete a Docker container by name', metavar='CONTAINER_NAME')
     parser.add_argument('--list', help='List something without a JSON file', action='store_true')
     # Add more arguments as needed
     
@@ -40,6 +45,21 @@ def main():
         json_string = create_func(args.create)
         docker_requests.json_parser(docker_requests.create_container(path='/containers/create', method='POST', data=json_string))
         print(json_string)
+    elif args.start:
+        container_name = args.start 
+        docker_requests.start_container(container_name=container_name)
+    elif args.stop:
+        container_name = args.stop
+        docker_requests.stop_container(container_name=container_name)
+        # Implement container stoppage
+    elif args.rename:
+        old_container_name, new_container_name = args.rename
+        docker_requests.rename_container(old_container_name=old_container_name, new_container_name=new_container_name)
+        # Implement container renamage
+    elif args.delete:
+        container_name = args.delete
+        docker_requests.delete_container(container_name=container_name)
+        # Implement container deletage
     elif args.list:
         print(docker_list.docker_list("/v1.40/containers/json?all=1"))
     else:
