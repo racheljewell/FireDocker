@@ -1,6 +1,24 @@
 import socket
 
-def docker_list(path, method='GET'):
+
+debug = False
+
+"""
+
+TODO: 
+    ADD PARSER FOR ALL RESPONSES TO SHOW JUST
+    1) Name
+    2) ID
+    3) Maybe some other import info for each response
+
+    4) Prob will have to have a custom parser so that
+       for each end of a response 
+       parse it and remove theese key value pairs
+
+"""
+
+
+def docker_list(path=None, method='GET'):
     # Create a Unix domain socket
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     
@@ -20,12 +38,17 @@ def docker_list(path, method='GET'):
         response_data = b''
         while True:
             chunk = sock.recv(4096)
+
             if not chunk:
                 break
+            temp = response_data
             response_data += chunk
-            print("Received chunk:", response_data.decode())  # Debug print
+
+            if debug: 
+                print("Received chunk:", response_data.decode())  # Debug print
         
             if response_data.endswith(b'0\r\n\r\n'):
+                response_data = temp
                 break
 
         return response_data.decode()
@@ -38,11 +61,5 @@ def docker_list(path, method='GET'):
         sock.close()
 
 
-"""
-
-Route for list command
-
-
-"""
-
-print(docker_list('/v1.40/containers/json?all=1'))
+if debug: 
+    print(docker_list('/v1.40/containers/json?all=1'))
