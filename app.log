@@ -1,0 +1,6 @@
+2024-04-16 14:49:13,873 - INFO - No error - operation successful.
+2024-04-16 14:49:13,873 - ERROR - Bad parameter - a provided parameter is incorrect. 
+2024-04-16 14:49:13,873 - ERROR - No such image - specified Docker image does not exist. Docker image not found in repository.
+2024-04-16 14:49:13,873 - WARNING - Unknown error code: 999 - 
+2024-04-16 14:49:13,873 - INFO - This is a general information message.
+2024-04-16 14:49:13,873 - ERROR - This is a general error message.

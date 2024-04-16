@@ -1,6 +1,7 @@
 import json
 import re
 import socket
+
 debug = False
 
 def create_container(path=None, method='GET', data=None):
@@ -23,6 +24,7 @@ def create_container(path=None, method='GET', data=None):
         if debug: 
             print("This is a requst \n" + request)
 
+
         # Send the request
         sock.sendall(request.encode())
          # Receive the response
@@ -34,7 +36,7 @@ def create_container(path=None, method='GET', data=None):
             temp = response_data
             response_data += chunk
             #print("Received chunk:", response_data.decode())  # Debug print
-            
+
             # Check if we received the terminating chunk '0\r\n\r\n'
             if response_data.endswith(b'0\r\n\r\n'):
                 response_data = temp
@@ -45,11 +47,13 @@ def create_container(path=None, method='GET', data=None):
         # Close the socket
         sock.close()
 
+
 def json_parser(strContaingJson): 
     match = re.search(r'\{(.+?)\}', strContaingJson, re.DOTALL)
     if match:
         json_data = match.group(1)  # Extract the matched content
         print(json_data)
+
     else:
         print("No JSON data found in the response.")
 

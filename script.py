@@ -12,7 +12,6 @@ git rm --cache <filename>
 
 """
 
-
 def create_func(filepath):
     json_string = "{}"
     try:
@@ -41,6 +40,7 @@ def main():
         json_string = create_func(args.create)
         docker_requests.json_parser(docker_requests.create_container(path='/containers/create', method='POST', data=json_string))
         print(json_string)
+
     elif args.list:
         print(docker_list.docker_list("/v1.40/containers/json?all=1"))
     else:

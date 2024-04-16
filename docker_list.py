@@ -19,6 +19,7 @@ TODO:
 
 
 def docker_list(path=None, method='GET'):
+
     # Create a Unix domain socket
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     
