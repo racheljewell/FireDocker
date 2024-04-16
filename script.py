@@ -29,6 +29,9 @@ def main():
     parser = argparse.ArgumentParser(description='Example script with multiple required arguments')
     
     parser.add_argument('--create', help='Create something with JSON file', metavar='JSON_PATH') # Requires JSON path
+    parser.add_argument('--stop', help='Stop a Docker container by name', metavar='CONTAINER_NAME')
+    parser.add_argument('--rename', help='Rename a Docker container', nargs=2, metavar=('OLD_NAME', 'NEW_NAME'))
+    parser.add_argument('--delete', help='Delete a Docker container by name', metavar='CONTAINER_NAME')
     parser.add_argument('--list', help='List something without a JSON file', action='store_true')
     # Add more arguments as needed
     
