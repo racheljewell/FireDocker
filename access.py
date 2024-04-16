@@ -1,4 +1,5 @@
 import json
+import logging
 
 """
 - need to make changes to this code
@@ -8,6 +9,11 @@ c) file name should be changed to something
 
 
 """
+
+
+# Configure logging
+logging.basicConfig(level=logging.DEBUG, filename='app.log', filemode='a', 
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 def remove_dict_elements(data1, data2):
@@ -42,6 +48,9 @@ def remove_list_elements(data1, data2):
 
     else:
         common_elements = list(set(data1) & set(data2))
+        # logging...
+        logging.debug(f"Common elements before removal: {common_elements}")
+
         for ele in common_elements:
     #            print(f"Element: {ele}")
             if isinstance(ele, dict) or isinstance(ele, list):
@@ -54,6 +63,9 @@ def remove_list_elements(data1, data2):
             else:
     #            print(f"Removing {ele} ...")
                 data2.remove(ele)
+
+                # logging...
+                logging.debug(f"Removed element {ele} from second list")
 
 # Load JSON data from file1
 with open("config_restrictions.json", 'r') as f:
