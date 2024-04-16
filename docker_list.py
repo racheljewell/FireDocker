@@ -41,14 +41,14 @@ def docker_list(path=None, method='GET'):
 
             if not chunk:
                 break
-            temp = response_data
+            #temp = response_data
             response_data += chunk
 
             if debug: 
                 print("Received chunk:", response_data.decode())  # Debug print
         
             if response_data.endswith(b'0\r\n\r\n'):
-                response_data = temp
+               # response_data = temp
                 break
 
         return response_data.decode()

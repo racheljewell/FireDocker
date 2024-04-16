@@ -1,6 +1,9 @@
 import argparse
 import json
 
+import docker_list
+import docker_requests
+
 def create_func(filepath):
     json_string = "{}"
     try:
@@ -27,9 +30,10 @@ def main():
     # Access the arguments using args.create, args.list, etc.
     if args.create:
         json_string = create_func(args.create)
+        docker_requests.json_parser(docker_requests.create_container(path='/containers/create', method='POST', data=json_string))
         print(json_string)
     elif args.list:
-        list_func()
+        print(docker_list.docker_list("/v1.40/containers/json?all=1"))
     else:
         parser.error("Error: At least one action is required. Use --create or --list.")
 

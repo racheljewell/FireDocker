@@ -1,5 +1,15 @@
 import json
 
+"""
+- need to make changes to this code
+a) the last line should write a new file named json_cleaned or some variation of the file name and cleaned
+b) does not need to clean all key value pairs just most important ones like image for now
+c) file name should be changed to something 
+
+
+"""
+
+
 def remove_dict_elements(data1, data2):
 #    print("Here in dict ...")
 #    print(f"Data1: {data1}")
@@ -45,13 +55,14 @@ def remove_list_elements(data1, data2):
                 data2.remove(ele)
 
 # Load JSON data from file1
-with open("config_demo.json", 'r') as f:
+with open("config_restrictions.json", 'r') as f:
     json_a_result = json.load(f)
 
 # Load JSON data from file2
 with open("config_test.json", 'r') as f:
     json_b_result = json.load(f)
 
+"""
 ## Output json_a_result and json_b_result before removal of common elements
 #print("json_a_result before removal:", json_a_result, "\n")
 #print("json_b_result before removal:", json_b_result, "\n")
@@ -67,7 +78,7 @@ with open("config_test.json", 'r') as f:
 ### Add elements that appears in json_a_result but not json_b_result
 ##add_dict_elements(json_a_result, json_b_result)
 ##print("")
-
+"""
 # Open the same JSON file in write mode
 with open("config_test.json", 'w') as file:
     json.dump(json_b_result, file, indent=4)  # Write the modified data back to the file, overwriting its content
