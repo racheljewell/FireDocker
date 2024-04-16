@@ -1,12 +1,6 @@
 import json
 import re
 import socket
-import logging
-
-# Configure logging
-logging.basicConfig(level=logging.DEBUG, filename='app.log', filemode='a', 
-                    format='%(asctime)s - %(levelname)s - %(message)s')
-
 
 debug = False
 
@@ -33,8 +27,6 @@ def create_container(path=None, method='GET', data=None):
         if debug: 
             print("This is a requst \n" + request)
 
-        # logging...
-        logging.debug(f"Request prepared: {request}")
 
         # Send the request
         sock.sendall(request.encode())
@@ -58,8 +50,6 @@ def create_container(path=None, method='GET', data=None):
         # Close the socket
         sock.close()
 
-        # logging...
-        logging.debug("Socket closed.")
 
 def json_parser(strContaingJson): 
     match = re.search(r'\{(.+?)\}', strContaingJson, re.DOTALL)
@@ -67,8 +57,6 @@ def json_parser(strContaingJson):
         json_data = match.group(1)  # Extract the matched content
         print(json_data)
 
-        # logging...
-        logging.debug(f"Extracted JSON data: {json_data}")
     else:
         print("No JSON data found in the response.")
 
