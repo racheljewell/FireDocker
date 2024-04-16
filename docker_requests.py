@@ -1,6 +1,7 @@
 import json
 import re
 import socket
+
 debug = False
 
 def create_container(path=None, method='GET', data=None):
@@ -22,6 +23,7 @@ def create_container(path=None, method='GET', data=None):
         
         if debug: 
             print("This is a requst \n" + request)
+
 
         # Send the request
         sock.sendall(request.encode())
@@ -45,11 +47,13 @@ def create_container(path=None, method='GET', data=None):
         # Close the socket
         sock.close()
 
+
 def json_parser(strContaingJson): 
     match = re.search(r'\{(.+?)\}', strContaingJson, re.DOTALL)
     if match:
         json_data = match.group(1)  # Extract the matched content
         print(json_data)
+
     else:
         print("No JSON data found in the response.")
 

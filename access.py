@@ -9,7 +9,6 @@ c) file name should be changed to something
 
 """
 
-
 def remove_dict_elements(data1, data2):
 #    print("Here in dict ...")
 #    print(f"Data1: {data1}")
@@ -42,6 +41,7 @@ def remove_list_elements(data1, data2):
 
     else:
         common_elements = list(set(data1) & set(data2))
+
         for ele in common_elements:
     #            print(f"Element: {ele}")
             if isinstance(ele, dict) or isinstance(ele, list):
@@ -54,6 +54,7 @@ def remove_list_elements(data1, data2):
             else:
     #            print(f"Removing {ele} ...")
                 data2.remove(ele)
+
 
 # Load JSON data from file1
 with open("config_restrictions.json", 'r') as f:
