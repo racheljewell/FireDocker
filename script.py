@@ -30,6 +30,9 @@ def main():
     parser = argparse.ArgumentParser(description='Example script with multiple required arguments')
     
     parser.add_argument('--create', help='Create something with JSON file', metavar='JSON_PATH') # Requires JSON path
+    parser.add_argument('--stop', help='Stop a Docker container by name', metavar='CONTAINER_NAME')
+    parser.add_argument('--rename', help='Rename a Docker container', nargs=2, metavar=('OLD_NAME', 'NEW_NAME'))
+    parser.add_argument('--delete', help='Delete a Docker container by name', metavar='CONTAINER_NAME')
     parser.add_argument('--list', help='List something without a JSON file', action='store_true')
     # Add more arguments as needed
     
@@ -41,6 +44,19 @@ def main():
         json_string = create_func(args.create)
         docker_requests.json_parser(docker_requests.create_container(path='/containers/create', method='POST', data=json_string))
         print(json_string)
+    elif args.stop:
+        container_name = args.stop
+        print("Stop:", container_name)
+        # Implement container stoppage
+    elif args.rename:
+        old_container_name, new_container_name = args.rename
+        print("Old:", old_container_name)
+        print("New:", new_container_name)
+        # Implement container renamage
+    elif args.delete:
+        container_name = args.delete
+        print("Delete:", container_name)
+        # Implement container deletage
     elif args.list:
         print(docker_list.docker_list("/v1.40/containers/json?all=1"))
     else:
