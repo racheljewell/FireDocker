@@ -56,45 +56,25 @@ def docker_list(path, method='GET'):
         
         # Receive the response
         response_data = b''
-        # Read the response header
-        while b'\r\n\r\n' not in response_data:
+        while True:
             chunk = sock.recv(4096)
             if not chunk:
                 break
             response_data += chunk
+            print("Received chunk:", response_data.decode())  # Debug print
+            
+            # Check if we received the terminating chunk '0\r\n\r\n'
+            if response_data.endswith(b'0\r\n\r\n'):
+                break
         
-        print("Received header:", response_data.decode())  # Debug print
-        
-        # Extract response header and remove it from response_data
-        header, _, response_data = response_data.partition(b'\r\n\r\n')
-        
-        print("Header:", header)  # Debug print
-        
-        # Now process the chunks if there's more data
-        if response_data:
-            while True:
-                # Read the chunk size
-                chunk_size_str, _, response_data = response_data.partition(b'\r\n')
-                print("Chunk size:", chunk_size_str)  # Debug print
-                chunk_size = int(chunk_size_str.strip(), 16)
-                if chunk_size == 0:
-                    break
-                # Read the chunk data
-                chunk_data = response_data[:chunk_size]
-                response_data = response_data[chunk_size + 2:]  # Skip \r\n after chunk data
-                response_data += chunk_data
-        
-        print("Final response:", response_data.decode())  # Debug print
         return response_data.decode()
 
 
     except Exception as e:
-        print("Error:", e)  # Debug print
         return str(e)
     
     finally: 
         sock.close()
-
 
 
 # Example: Create a container
@@ -112,6 +92,6 @@ data = {
 
 
 
-print(send_request('/containers/create', method='POST', data=json.dumps(data)))
-#print(docker_list('/v1.40/containers/json?all=1'))
+print(create_container('/containers/create', method='POST', data=json.dumps(data)))
+print(docker_list('/v1.40/containers/json?all=1'))
 print("DONE")
