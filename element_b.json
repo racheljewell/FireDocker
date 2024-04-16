@@ -1,0 +1,9 @@
+{
+    "fruits": ["banana", "grape"],
+    "numbers": [2, 4],
+    "person": {
+        "name": "Jane",
+        "age": 25,
+        "grade" : 10
+    }
+}

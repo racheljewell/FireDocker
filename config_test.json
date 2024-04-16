@@ -1,0 +1,68 @@
+{
+    "Env": [],
+    "Cmd": [],
+    "Labels": {},
+    "Volumes": {
+        "/volumes/data": {}
+    },
+    "Healthcheck": {
+        "Test": []
+    },
+    "ExposedPorts": {
+        "22/tcp": {}
+    },
+    "HostConfig": {
+        "Binds": [],
+        "Tmpfs": {},
+        "Links": [],
+        "BlkioWeightDevice": [
+            {}
+        ],
+        "BlkioDeviceReadBps": [
+            {}
+        ],
+        "BlkioDeviceReadIOps": [
+            {}
+        ],
+        "BlkioDeviceWriteBps": [
+            {}
+        ],
+        "BlkioDeviceWriteIOps": [
+            {}
+        ],
+        "PortBindings": {
+            "22/tcp": [
+                {}
+            ]
+        },
+        "Dns": [],
+        "DnsOptions": [],
+        "DnsSearch": [],
+        "VolumesFrom": [],
+        "CapAdd": [],
+        "CapDrop": [],
+        "GroupAdd": [],
+        "RestartPolicy": {},
+        "Devices": [],
+        "Sysctls": {},
+        "Ulimits": [
+            {}
+        ],
+        "LogConfig": {
+            "Config": {}
+        },
+        "SecurityOpt": [],
+        "StorageOpt": {}
+    },
+    "NetworkingConfig": {
+        "EndpointsConfig": {
+            "isolated_nw": {
+                "IPAMConfig": {
+                    "LinkLocalIPs": []
+                },
+                "Links": [],
+                "Aliases": []
+            }
+        }
+    }
+}
