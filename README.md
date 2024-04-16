@@ -35,7 +35,19 @@ sudo sed -i 's/\r//' <path/to/scriptName>
 
 ## How to build/deploy
 
-Once ubuntu installs for windows or cloned for other machines, in the terminal 
+Once ubuntu installs for windows or cloned for other machines, make sure docker desktop is running.
+
+In a new terminal:
+```bash
+    wsl --set-default ubuntu
+```
+
+To start ubuntu:
+
+```bash
+    wsl
+```
+To get to where your clone is saved:
 
 ```bash
     cd /mnt
@@ -46,15 +58,7 @@ Once ubuntu installs for windows or cloned for other machines, in the terminal
 
 Then cd to where your clone is
 
-In a new terninal:
-
-```bash
-    wsl --set-default ubuntu
-```
-
-Back to the terinal where ubuntu is running: 
-
-Estalish connection with Docker
+Establish connection with Docker:
 
 ```bash
     docker
@@ -64,6 +68,8 @@ To create an empty container:
 ```bash
     sudo python3 script.py --create config_test.json
 ```
+
+Enter your password
 
 
 ## Functionality
