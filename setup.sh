@@ -16,7 +16,8 @@ if pgrep -s 0 "^sudo$" > /dev/null ; then
     TARGET_DIR="/usr/local/bin"
     echo "$TARGET_DIR"
 
-    echo -e "\033[32mMoving the Python script to the target directory ...\033[0m"
+    echo -e "\033[32mMoving the Python script to the target directory and creating a copy ...\033[0m"
+    cp "$SCRIPT_NAME" "copy_secdocker2.py"
     mv "$SCRIPT_NAME" "$TARGET_DIR"
     if [ $? -ne 0 ]; then
         echo -e "\033[31mERROR STATUS FAILED TO MOVE FILE TO TARGET DIR CODE 2\033[0m"
