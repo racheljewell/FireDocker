@@ -1,4 +1,5 @@
 import socket
+import logging
 
 
 debug = False
@@ -18,7 +19,17 @@ TODO:
 """
 
 
+# Configure logging
+logging.basicConfig(level=logging.DEBUG, filename='app.log', filemode='a', 
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+
+
+
 def docker_list(path=None, method='GET'):
+    # logging ...
+    logging.debug(f"Requesting Docker list with path: {path} and method: {method}")
+
+
     # Create a Unix domain socket
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     
@@ -30,6 +41,9 @@ def docker_list(path=None, method='GET'):
         request += 'Host: unix\r\n'
         request += 'Content-Type: application/json\r\n'
         request += '\r\n'  # End of headers
+
+        # logging...
+        logging.debug(f"Sending request: {request}")
 
         # Send the request
         sock.sendall(request.encode())
@@ -44,6 +58,9 @@ def docker_list(path=None, method='GET'):
             #temp = response_data
             response_data += chunk
 
+            # logging...
+            logging.debug(f"Received chunk: {response_data.decode()}")
+
             if debug: 
                 print("Received chunk:", response_data.decode())  # Debug print
         
@@ -55,10 +72,16 @@ def docker_list(path=None, method='GET'):
 
         
     except Exception as e:
+        # logging...
+        logging.error("Failed to list Docker containers", exc_info=True)
+
         return str(e)
     
     finally: 
         sock.close()
+
+        # logging...
+        logging.debug("Socket closed.")
 
 
 if debug: 
