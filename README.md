@@ -35,6 +35,29 @@ sudo sed -i 's/\r//' <path/to/scriptName>
 
 ## How to build/deploy
 
+Once ubuntu installs for windows or cloned for other machines, in the terminal 
+
+```bash
+    cd /mnt
+    cd c
+```
+
+Then cd to where your clone is
+
+In a new terninal 
+
+```bash
+    wsl --set-default ubuntu
+```
+
+Back to the terinal where ubuntu is running 
+
+```bash
+    docker
+    sudo python3 script.py --create config_test.json
+```
+
+
 ## Functionality
 
 The code works by...
