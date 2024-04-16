@@ -39,21 +39,29 @@ Once ubuntu installs for windows or cloned for other machines, in the terminal
 
 ```bash
     cd /mnt
+```
+```bash
     cd c
 ```
 
 Then cd to where your clone is
 
-In a new terninal 
+In a new terninal:
 
 ```bash
     wsl --set-default ubuntu
 ```
 
-Back to the terinal where ubuntu is running 
+Back to the terinal where ubuntu is running: 
+
+Estalish connection with Docker
 
 ```bash
     docker
+```
+To create an empty container:
+
+```bash
     sudo python3 script.py --create config_test.json
 ```
 
