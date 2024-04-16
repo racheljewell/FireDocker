@@ -1,10 +1,10 @@
 import json
+import re
 import socket
-
+debug = False
 def create_container(path, method='GET', data=None):
     # Create a Unix domain socket
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-    
     try:
         # Connect to the Docker Unix socket
         sock.connect('/var/run/docker.sock')
@@ -19,15 +19,26 @@ def create_container(path, method='GET', data=None):
             request += '\r\n'
             request += data
         
-        print(request)
+        if debug: 
+            print("This is a requst \n" + request)
+
         # Send the request
         sock.sendall(request.encode())
-        
-        # Receive the response
-        response = sock.recv(4096)
-        
-        # Parse and return the response
-        return response.decode()
+         # Receive the response
+        response_data = b''
+        while True:
+            chunk = sock.recv(4096)
+            if not chunk:
+                break
+            temp = response_data
+            response_data += chunk
+            #print("Received chunk:", response_data.decode())  # Debug print
+            
+            # Check if we received the terminating chunk '0\r\n\r\n'
+            if response_data.endswith(b'0\r\n\r\n'):
+                response_data = temp
+                break
+        return response_data.decode()
     
     finally:
         # Close the socket
@@ -77,9 +88,18 @@ def docker_list(path, method='GET'):
         sock.close()
 
 
+
+def json_parser(strContaingJson): 
+    match = re.search(r'\{(.+?)\}', strContaingJson, re.DOTALL)
+    if match:
+        json_data = match.group(1)  # Extract the matched content
+        print(json_data)
+    else:
+        print("No JSON data found in the response.")
+
 # Example: Create a container
 data = {
-    "Image": "python:latest",
+    "Image": "mysql:latest",
     "Cmd": ["mysqld"],
     "Env": ["MYSQL_ROOT_PASSWORD=my-secret-pw"],
     "HostConfig": {
@@ -91,7 +111,6 @@ data = {
 
 
 
-
-print(create_container('/containers/create', method='POST', data=json.dumps(data)))
-print(docker_list('/v1.40/containers/json?all=1'))
-print("DONE")
+response_string_container = create_container('/containers/create', method='POST', data=json.dumps(data))
+json_parser(response_string_container)
+#print(docker_list('/v1.40/containers/json?all=1'))
