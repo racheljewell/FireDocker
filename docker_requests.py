@@ -34,7 +34,7 @@ def create_container(path=None, method='GET', data=None):
             temp = response_data
             response_data += chunk
             #print("Received chunk:", response_data.decode())  # Debug print
-            
+
             # Check if we received the terminating chunk '0\r\n\r\n'
             if response_data.endswith(b'0\r\n\r\n'):
                 response_data = temp

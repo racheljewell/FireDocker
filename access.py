@@ -13,8 +13,8 @@ c) file name should be changed to something
 def remove_dict_elements(data1, data2):
 #    print("Here in dict ...")
 #    print(f"Data1: {data1}")
-#    print(f"Data2: {data2}")
-        
+#    print(f"Data2: {data2}") 
+  
     common_keys = set(data1.keys()) & set(data2.keys())
     for key in common_keys:
 #        print(f"Key: {key}")
@@ -24,13 +24,14 @@ def remove_dict_elements(data1, data2):
         elif isinstance(data1[key], list): 
 #            print("list case ...")
             remove_list_elements(data1[key], data2[key])
-        elif data1[key] == data2[key]: del data2[key]
+        elif data1[key] == data2[key]: 
+            del data2[key]
 
 def remove_list_elements(data1, data2):
 #    print("Here in list ...")
 #    print("JSON A:", data1, "\nJSON B:", data2)
 #    print("Common Elements:", list(set(data1) & set(data2)))
-    
+
     dict_in_data1 = any(isinstance(item, dict) for item in data1)
     dict_in_data2 = any(isinstance(item, dict) for item in data2)
     

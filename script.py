@@ -12,7 +12,6 @@ git rm --cache <filename>
 
 """
 
-
 def create_func(filepath):
     json_string = "{}"
     try:
