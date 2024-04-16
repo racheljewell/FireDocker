@@ -6,6 +6,8 @@ SecDocker acts as an application firewall, monitoring and filtering Docker run c
 
 ## Requirements
 
+You will need to install [Docker](https://www.docker.com/get-started/)
+
 FireDocker can be run on Linux, MacOS, or on Windows with WSL. It can simply be run as described below on Linux or MacOS. To run on Windows, follow these instructions to set up WSL:
 
 1. Install WSL:
