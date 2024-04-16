@@ -5,9 +5,6 @@ import socket
 debug = False
 
 def create_container(path=None, method='GET', data=None):
-    # logging...
-    logging.debug(f"Creating container with path: {path}, method: {method}, data: {data}")
-
     # Create a Unix domain socket
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     try:
@@ -59,9 +56,6 @@ def json_parser(strContaingJson):
 
     else:
         print("No JSON data found in the response.")
-
-        # logging...
-        logging.warning("No JSON data found in the response.")
 
 # Debug data
 data = {

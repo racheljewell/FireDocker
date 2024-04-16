@@ -3,7 +3,6 @@ import json
 
 import docker_list
 import docker_requests
-import logging
 """
 TODO: 
 - rm the demo json
@@ -19,17 +18,11 @@ def create_func(filepath):
         with open(filepath, 'r') as file:
             data = json.load(file)
         json_string = json.dumps(data)
-        # logging...
-        logging.debug(f"Loaded JSON data from {filepath}")
     except:
-        # logging...
-        logging.error(f"Error loading JSON file '{filepath}': {str(e)}")
         print(f"Error: JSON file '{filepath}' does not exist.")
     return json_string
 
 def list_func():
-    # logging...
-    logging.info("Executing list function")
     print("List function ...")
 
 def main():
@@ -49,12 +42,8 @@ def main():
         print(json_string)
 
     elif args.list:
-        # logging...
-        logging.info("Container listing requested")
         print(docker_list.docker_list("/v1.40/containers/json?all=1"))
     else:
-        # logging...
-        logging.error("No valid action provided. Exiting.")
         parser.error("Error: At least one action is required. Use --create or --list.")
 
 if __name__ == '__main__':
