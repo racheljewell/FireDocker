@@ -3,6 +3,14 @@ import json
 
 import docker_list
 import docker_requests
+"""
+TODO: 
+- rm the demo json
+- rm the other untracked json files from cache
+
+git rm --cache <filename>
+
+"""
 
 def create_func(filepath):
     json_string = "{}"
