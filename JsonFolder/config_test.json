@@ -12,7 +12,7 @@
     "StdinOnce": false,
 
     "Entrypoint": "",
-    "Image": ["ubuntu","mysql"],
+    "Image": ["ubuntu","mysql:latest"],
     "ExposedPorts": {
             "22/tcp": {}
     }

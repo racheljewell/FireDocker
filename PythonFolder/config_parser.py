@@ -1,7 +1,7 @@
 import json
 import os
 
-debug = False
+debug = True
 
 
 """
@@ -12,8 +12,6 @@ c) file name should be changed to something
 
 
 """
-
-
 
 
 def before(jsonA,jsonB):
@@ -87,7 +85,7 @@ def restrict(jsonstr):
         json_a_result = json.load(f)
 
     # Load JSON data from file2
-    json_b_result = json.loads(jsonstr)
+    json_b_result = json.loads(json_test)
 
     """
     ## Output json_a_result and json_b_result before removal of common elements

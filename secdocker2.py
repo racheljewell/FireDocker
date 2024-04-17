@@ -15,13 +15,15 @@ git rm --cache <filename>
 
 def jsonfile_to_data(filepath):
     json_string = "{}"
+    error = False
     try:
         with open(filepath, 'r') as file:
             data = json.load(file)
         json_string = json.dumps(data)
     except:
         print(f"Error: JSON file '{filepath}' does not exist.")
-    return json_string
+        error = True
+    return json_string,error
 
 def list_func():
     print("List function ...")
@@ -42,9 +44,10 @@ def main():
     json_string = ""
     # Access the arguments using args.create, args.list, etc.
     if args.create:
-        json_string = jsonfile_to_data(args.create)
-        docker_requests.json_parser(docker_requests.create_container(path='/containers/create', method='POST', data=json_string))
-        print(json_string)
+        json_string,error = jsonfile_to_data(args.create)
+        if not error:
+            docker_requests.json_parser(docker_requests.create_container(path='/containers/create', method='POST', data=json_string))
+            print(json_string)
     elif args.start:
         container_name = args.start 
         docker_requests.start_container(container_name=container_name)
