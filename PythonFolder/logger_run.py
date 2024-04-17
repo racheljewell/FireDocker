@@ -1,4 +1,4 @@
-from logger import Logger  
+from PythonFolder.logger import Logger  
 
 # Test calls to log messages
 Logger.log_message(201)  # Logs an informational message

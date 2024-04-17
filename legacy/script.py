@@ -1,8 +1,8 @@
 import argparse
 import json
 
-import docker_list
-import docker_requests
+import PythonFolder.docker_list as docker_list
+import PythonFolder.docker_requests as docker_requests
 """
 TODO: 
 - rm the demo json
