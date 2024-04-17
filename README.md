@@ -74,4 +74,52 @@ Enter your password
 
 ## Functionality
 
-The code works by...
+#### To create a container
+
+Go to docker_requests.py and change the debug to "True" and save.
+
+Then run 
+```bash
+    python3 secdocker.py --create
+```
+
+You will be given an "This is a request" prompt followed by an error. Ignore this error.
+
+Change the debug to "False" and save.
+
+To make sure container was created: 
+```bash
+    docker ps -a
+```
+You should see seven labels followed by your newly created container
+
+#### To start a container 
+
+To see the name of the container created:
+```bash
+    docker ps -a
+```
+To start the coontainer:
+```bash
+    python3 secdocker.py --start "<name of your container>"
+```
+To check if working as intended:
+```bash
+    docker ps -a
+```
+the status section should say UP with 
+
+#### To stop a container 
+
+To see the name of the container created:
+```bash
+    docker ps -a
+```
+To stop the coontainer:
+```bash
+    python3 secdocker.py --stop "<name of your container>"
+```
+To see it running:
+```bash
+    docker ps -a
+```
