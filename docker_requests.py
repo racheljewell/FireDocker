@@ -47,6 +47,138 @@ def create_container(path=None, method='GET', data=None):
         # Close the socket
         sock.close()
 
+def delete_container(container_name):
+    # Create a Unix domain socket
+    sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    try:
+        # Connect to the Docker Unix socket
+        sock.connect('/var/run/docker.sock')
+        
+        # Prepare the HTTP request to delete the container by name
+        path = f'/containers/{container_name}'
+        method = 'DELETE'
+        
+        request = f'{method} {path} HTTP/1.1\r\n'
+        request += 'Host: unix\r\n'
+        request += 'Content-Type: application/json\r\n'
+        request += '\r\n'
+        
+        if debug: 
+            print("This is a request:\n" + request)
+
+        # Send the request
+        sock.sendall(request.encode())
+        
+        # Receive the response
+        
+        response_data = sock.recv(4096).decode()
+        
+        print(response_data)
+        return response_data
+    
+    finally:
+        # Close the socket
+        sock.close()
+
+def stop_container(container_name):
+    # Create a Unix domain socket
+    sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    try:
+        # Connect to the Docker Unix socket
+        sock.connect('/var/run/docker.sock')
+        
+        # Prepare the HTTP request to delete the container by name
+        path = f'/containers/{container_name}/stop'
+        method = 'POST'
+        
+        request = f'{method} {path} HTTP/1.1\r\n'
+        request += 'Host: unix\r\n'
+        request += 'Content-Type: application/json\r\n'
+        request += '\r\n'
+        
+        if debug: 
+            print("This is a request:\n" + request)
+
+        # Send the request
+        sock.sendall(request.encode())
+        
+        # Receive the response
+        
+        response_data = sock.recv(4096).decode()
+        
+        print(response_data)
+        return response_data
+    
+    finally:
+        # Close the socket
+        sock.close()
+
+def start_container(container_name):
+    # Create a Unix domain socket
+    sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    try:
+        # Connect to the Docker Unix socket
+        sock.connect('/var/run/docker.sock')
+        
+        # Prepare the HTTP request to delete the container by name
+        path = f'/containers/{container_name}/start'
+        method = 'POST'
+        
+        request = f'{method} {path} HTTP/1.1\r\n'
+        request += 'Host: unix\r\n'
+        request += 'Content-Type: application/json\r\n'
+        request += '\r\n'
+        
+        if debug: 
+            print("This is a request:\n" + request)
+
+        # Send the request
+        sock.sendall(request.encode())
+        
+        # Receive the response
+        
+        response_data = sock.recv(4096).decode()
+        
+        print(response_data)
+        return response_data
+    
+    finally:
+        # Close the socket
+        sock.close()
+
+def rename_container(old_container_name, new_container_name):
+    # Create a Unix domain socket
+    sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    try:
+        # Connect to the Docker Unix socket
+        sock.connect('/var/run/docker.sock')
+        
+        # Prepare the HTTP request to delete the container by name
+        path = f'/containers/{old_container_name}/rename?name={new_container_name}'
+        method = 'POST'
+        
+        request = f'{method} {path} HTTP/1.1\r\n'
+        request += 'Host: unix\r\n'
+        request += 'Content-Type: application/json\r\n'
+        request += '\r\n'
+        
+        if debug: 
+            print("This is a request:\n" + request)
+
+        # Send the request
+        sock.sendall(request.encode())
+        
+        # Receive the response
+        
+        response_data = sock.recv(4096).decode()
+        
+        print(response_data)
+        return response_data
+    
+    finally:
+        # Close the socket
+        sock.close()
+
 
 def json_parser(strContaingJson): 
     match = re.search(r'\{(.+?)\}', strContaingJson, re.DOTALL)
