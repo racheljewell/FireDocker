@@ -44,7 +44,7 @@ def main():
     if args.create:
         json_string = create_func(args.create)
         docker_requests.json_parser(docker_requests.create_container(path='/containers/create', method='POST', data=json_string))
-        print(json_string)
+        # print(json_string)
     elif args.start:
         container_name = args.start 
         docker_requests.start_container(container_name=container_name)
