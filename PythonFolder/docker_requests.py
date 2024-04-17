@@ -1,6 +1,7 @@
 import json
 import re
 import socket
+import PythonFolder.logger as logger
 
 debug = False
 
@@ -41,6 +42,12 @@ def create_container(path=None, method='GET', data=None):
             if response_data.endswith(b'0\r\n\r\n'):
                 response_data = temp
                 break
+        response_str = response_data.decode()
+        
+        headers, body = response_str.split('\r\n\r\n', 1)
+        statusCode = int(headers[9:12])
+        log = logger.Logger()
+        log.log_message(statusCode, "Creating Container")
         return response_data.decode()
     
     finally:
@@ -71,9 +78,14 @@ def delete_container(container_name):
         
         # Receive the response
         
-        response_data = sock.recv(4096).decode()
+        response_data = sock.recv(4096)
         
-        print(response_data)
+        response_str = response_data.decode()
+        
+        headers, body = response_str.split('\r\n\r\n', 1)
+        statusCode = int(headers[9:12])
+        log = logger.Logger()
+        log.log_message(statusCode, "Deleting Container")
         return response_data
     
     finally:
@@ -104,9 +116,14 @@ def stop_container(container_name):
         
         # Receive the response
         
-        response_data = sock.recv(4096).decode()
+        response_data = sock.recv(4096)
+        response_str = response_data.decode()
         
-        print(response_data)
+        headers, body = response_str.split('\r\n\r\n', 1)
+        statusCode = int(headers[9:12])
+        log = logger.Logger()
+        log.log_message(statusCode, "Stopping Container")
+        
         return response_data
     
     finally:
@@ -137,9 +154,14 @@ def start_container(container_name):
         
         # Receive the response
         
-        response_data = sock.recv(4096).decode()
+        response_data = sock.recv(4096)
         
-        print(response_data)
+        response_str = response_data.decode()
+        
+        headers, body = response_str.split('\r\n\r\n', 1)
+        statusCode = int(headers[9:12])
+        log = logger.Logger()
+        log.log_message(statusCode, "Starting Container")
         return response_data
     
     finally:
@@ -170,9 +192,15 @@ def rename_container(old_container_name, new_container_name):
         
         # Receive the response
         
-        response_data = sock.recv(4096).decode()
+        response_data = sock.recv(4096)
+        response_str = response_data.decode()
         
-        print(response_data)
+        headers, body = response_str.split('\r\n\r\n', 1)
+        statusCode = int(headers[9:12])
+        log = logger.Logger()
+        log.log_message(statusCode, "Renaming Container")
+        return response_data
+        
         return response_data
     
     finally:
