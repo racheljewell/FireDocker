@@ -86,7 +86,7 @@ Verifying a connection with Docker:
 To create an empty container:
 
 ```bash
-    sudo python3 script.py --create config_test.json
+    sudo python3 secdocker2.py --create config_test.json
 ```
 
 Enter your password
