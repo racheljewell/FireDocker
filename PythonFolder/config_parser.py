@@ -42,7 +42,7 @@ def remove_dict_elements(data1, data2):
             remove_list_elements(data1[key], data2[key])
         elif data1[key] == data2[key]: 
             del data2[key]
-
+# lets go
 def remove_list_elements(data1, data2):
 #    print("Here in list ...")
 #    print("JSON A:", data1, "\nJSON B:", data2)
