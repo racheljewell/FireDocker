@@ -1,4 +1,8 @@
 import json
+import os
+
+debug = False
+
 
 """
 - need to make changes to this code
@@ -8,6 +12,19 @@ c) file name should be changed to something
 
 
 """
+
+
+
+
+def before(jsonA,jsonB):
+    print("json_a_result before removal:", jsonA, "\n")
+    print("json_b_result before removal:", jsonB, "\n")
+    print("\n")
+
+def after(jsonA,jsonB):
+    print("json_a_result after removal:", jsonA, "\n")
+    print("json_b_result after removal:", jsonB,"\n")
+    print("\n")
 
 def remove_dict_elements(data1, data2):
 #    print("Here in dict ...")
@@ -56,31 +73,51 @@ def remove_list_elements(data1, data2):
                 data2.remove(ele)
 
 
-# Load JSON data from file1
-with open("config_restrictions.json", 'r') as f:
-    json_a_result = json.load(f)
+def restrict(jsonstr):
 
-# Load JSON data from file2
-with open("config_test.json", 'r') as f:
-    json_b_result = json.load(f)
+    new_json = ""
 
-"""
-## Output json_a_result and json_b_result before removal of common elements
-#print("json_a_result before removal:", json_a_result, "\n")
-#print("json_b_result before removal:", json_b_result, "\n")
-#
-## Remove common elements from json_a_result
-#remove_dict_elements(json_a_result, json_b_result)
-#print("")
-#
-## Output json_a_result and json_b_result after removal of common elements
-#print("json_a_result after removal:", json_a_result, "\n")
-#print("json_b_result after removal:", json_b_result)
-#
-### Add elements that appears in json_a_result but not json_b_result
-##add_dict_elements(json_a_result, json_b_result)
-##print("")
-"""
-# Open the same JSON file in write mode
-with open("config_test.json", 'w') as file:
-    json.dump(json_b_result, file, indent=4)  # Write the modified data back to the file, overwriting its content
+    # Get the current directory and create the full path
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    json_restrictions = os.path.join(current_dir, "../JsonFolder/config_restrictions.json")
+    #might need to be abs path not just realtive? 
+    json_test = jsonstr
+    # Load JSON data from file1
+    with open(json_restrictions, 'r') as f:
+        json_a_result = json.load(f)
+
+    # Load JSON data from file2
+    json_b_result = json.loads(jsonstr)
+
+    """
+    ## Output json_a_result and json_b_result before removal of common elements
+    #print("json_a_result before removal:", json_a_result, "\n")
+    #print("json_b_result before removal:", json_b_result, "\n")
+    #
+    ## Remove common elements from json_a_result
+    #remove_dict_elements(json_a_result, json_b_result)
+    #print("")
+    #
+    ## Output json_a_result and json_b_result after removal of common elements
+    #print("json_a_result after removal:", json_a_result, "\n")
+    #print("json_b_result after removal:", json_b_result)
+    #
+    ### Add elements that appears in json_a_result but not json_b_result
+    ##add_dict_elements(json_a_result, json_b_result)
+    ##print("")
+    """
+    if debug: 
+        before(json_a_result,json_b_result)
+
+    remove_dict_elements(json_a_result, json_b_result)
+   
+    new_json = str(json_b_result)
+
+    if debug: 
+        after(json_a_result,json_b_result)
+
+    return new_json
+
+
+
+    

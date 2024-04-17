@@ -1,6 +1,7 @@
 import json
 import re
 import socket
+import PythonFolder.config_parser as config_parser
 
 debug = False
 
@@ -17,6 +18,7 @@ def create_container(path=None, method='GET', data=None):
         request += 'Content-Type: application/json\r\n'
         
         if data:
+            data = config_parser.restrict(data)
             request += f'Content-Length: {len(data)}\r\n'
             request += '\r\n'
             request += data

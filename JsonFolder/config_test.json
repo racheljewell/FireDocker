@@ -1,68 +1,20 @@
 {
-    "Env": [],
-    "Cmd": [],
-    "Labels": {},
-    "Volumes": {
-        "/volumes/data": {}
-    },
-    "Healthcheck": {
-        "Test": []
-    },
+    "Hostname": "",
+    "Domainname": "",
+    "User": "",
+
+    "AttachStdin": false, 
+    "AttachStdout": true,
+    "AttachStderr": true,
+
+    "Tty": false,
+    "OpenStdin": false,
+    "StdinOnce": false,
+
+    "Entrypoint": "",
+    "Image": ["ubuntu","mysql"],
     "ExposedPorts": {
-        "22/tcp": {}
-    },
-    "HostConfig": {
-        "Binds": [],
-        "Tmpfs": {},
-        "Links": [],
-        "BlkioWeightDevice": [
-            {}
-        ],
-        "BlkioDeviceReadBps": [
-            {}
-        ],
-        "BlkioDeviceReadIOps": [
-            {}
-        ],
-        "BlkioDeviceWriteBps": [
-            {}
-        ],
-        "BlkioDeviceWriteIOps": [
-            {}
-        ],
-        "PortBindings": {
-            "22/tcp": [
-                {}
-            ]
-        },
-        "Dns": [],
-        "DnsOptions": [],
-        "DnsSearch": [],
-        "VolumesFrom": [],
-        "CapAdd": [],
-        "CapDrop": [],
-        "GroupAdd": [],
-        "RestartPolicy": {},
-        "Devices": [],
-        "Sysctls": {},
-        "Ulimits": [
-            {}
-        ],
-        "LogConfig": {
-            "Config": {}
-        },
-        "SecurityOpt": [],
-        "StorageOpt": {}
-    },
-    "NetworkingConfig": {
-        "EndpointsConfig": {
-            "isolated_nw": {
-                "IPAMConfig": {
-                    "LinkLocalIPs": []
-                },
-                "Links": [],
-                "Aliases": []
-            }
-        }
+            "22/tcp": {}
     }
+ 
 }

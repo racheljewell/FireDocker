@@ -13,7 +13,7 @@ git rm --cache <filename>
 """
 
 
-def create_func(filepath):
+def jsonfile_to_data(filepath):
     json_string = "{}"
     try:
         with open(filepath, 'r') as file:
@@ -42,7 +42,7 @@ def main():
     json_string = ""
     # Access the arguments using args.create, args.list, etc.
     if args.create:
-        json_string = create_func(args.create)
+        json_string = jsonfile_to_data(args.create)
         docker_requests.json_parser(docker_requests.create_container(path='/containers/create', method='POST', data=json_string))
         print(json_string)
     elif args.start:
