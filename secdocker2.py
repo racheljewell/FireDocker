@@ -61,7 +61,7 @@ def main():
         docker_requests.delete_container(container_name=container_name)
         # Implement container deletage
     elif args.list:
-        print(docker_list.docker_list("/v1.40/containers/json?all=1"))
+        docker_list.docker_list("/v1.40/containers/json?all=1")
     else:
         parser.error("Error: At least one action is required. Use --create or --list.")
 

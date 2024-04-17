@@ -1,4 +1,5 @@
 import socket
+import json
 
 
 debug = False
@@ -51,6 +52,23 @@ def docker_list(path=None, method='GET'):
             if response_data.endswith(b'0\r\n\r\n'):
                # response_data = temp
                 break
+        response_str = response_data.decode()
+        # print(response_str)
+        headers, body = response_str.split('\r\n\r\n', 1)
+        first_bracket_index = body.find("[")
+        last_bracket_index = body.rfind("]")
+        json_content = body[first_bracket_index:last_bracket_index + 1]
+        # print(json_content)
+        containers = json.loads(json_content)
+        # print(containers)
+        print("{:<20}\t{:<20}\t{:<20}\t{:<20}".format("CONTAINER_NAME", "CONTAINER_ID", "IMAGE", "STATUS"))
+        for container in containers:
+            name = container.get("Names")[0].strip('/')
+            id = container.get("Id")[:12]
+            image = container.get("Image")
+            status = container.get("Status")
+            
+            print("{:<20}\t{:<20}\t{:<20}\t{:<20}".format(name, id, image, status))
 
         return response_data.decode()
 
