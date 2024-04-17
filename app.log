@@ -23,3 +23,22 @@
 2024-04-17 15:02:41,716 - ERROR - Docker image already in requested state. Starting Container
 2024-04-17 15:03:54,870 - ERROR - No such image - specified Docker image does not exist. Starting Container
 2024-04-17 15:04:25,262 - INFO - No error - operation successful. Renaming Container
+2024-04-17 17:17:33,599 - ERROR - Bad parameter - a provided parameter is incorrect. Creating Container
+2024-04-17 17:18:08,107 - ERROR - Bad parameter - a provided parameter is incorrect. Creating Container
+2024-04-17 17:20:16,194 - ERROR - Bad parameter - a provided parameter is incorrect. Creating Container
+2024-04-17 17:35:10,756 - ERROR - Bad parameter - a provided parameter is incorrect. Creating Container
+2024-04-17 17:35:27,330 - ERROR - Bad parameter - a provided parameter is incorrect. Creating Container
+2024-04-17 17:35:27,335 - ERROR - Bad parameter - a provided parameter is incorrect. Creating Container
+2024-04-17 17:35:36,411 - ERROR - Bad parameter - a provided parameter is incorrect. Creating Container
+2024-04-17 17:36:34,055 - ERROR - Bad parameter - a provided parameter is incorrect. Creating Container
+2024-04-17 17:39:22,781 - ERROR - Bad parameter - a provided parameter is incorrect. Creating Container
+2024-04-17 17:40:04,524 - ERROR - Bad parameter - a provided parameter is incorrect. Creating Container
+2024-04-17 17:41:27,789 - INFO - No error - operation successful. Creating Container
+2024-04-17 17:43:16,696 - INFO - No error - operation successful. Creating Container
+2024-04-17 17:43:24,629 - INFO - No error - operation successful. Creating Container
+2024-04-17 17:43:26,549 - INFO - No error - operation successful. Creating Container
+2024-04-17 17:45:33,934 - ERROR - No such image - specified Docker image does not exist. Creating Container
+2024-04-17 17:46:39,763 - INFO - No error - operation successful. Creating Container
+2024-04-17 17:47:11,057 - INFO - No error - operation successful. Creating Container
+2024-04-17 17:47:13,784 - INFO - No error - operation successful. Creating Container
+2024-04-17 17:47:36,991 - INFO - No error - operation successful. Creating Container

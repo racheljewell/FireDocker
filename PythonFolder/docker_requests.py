@@ -19,7 +19,8 @@ def create_container(path=None, method='GET', data=None):
         request += 'Content-Type: application/json\r\n'
         
         if data:
-            data = config_parser.restrict(data)
+            data = json.dumps(config_parser.restrict(data))
+            print(data)
             request += f'Content-Length: {len(data)}\r\n'
             request += '\r\n'
             request += data
@@ -32,6 +33,7 @@ def create_container(path=None, method='GET', data=None):
         sock.sendall(request.encode())
          # Receive the response
         response_data = b''
+
         while True:
             chunk = sock.recv(4096)
             if not chunk:
@@ -44,12 +46,16 @@ def create_container(path=None, method='GET', data=None):
             if response_data.endswith(b'0\r\n\r\n'):
                 response_data = temp
                 break
+
         response_str = response_data.decode()
         
         headers, body = response_str.split('\r\n\r\n', 1)
+
         statusCode = int(headers[9:12])
+
         log = logger.Logger()
         log.log_message(statusCode, "Creating Container")
+
         return response_data.decode()
     
     finally:

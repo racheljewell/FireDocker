@@ -109,7 +109,7 @@ def restrict(jsonstr):
 
     remove_dict_elements(json_a_result, json_b_result)
    
-    new_json = str(json_b_result)
+    new_json = json_b_result
 
     if debug: 
         after(json_a_result,json_b_result)

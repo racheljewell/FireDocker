@@ -46,8 +46,10 @@ def main():
     if args.create:
         json_string,error = jsonfile_to_data(args.create)
         if not error:
-            docker_requests.json_parser(docker_requests.create_container(path='/containers/create', method='POST', data=json_string))
             print(json_string)
+            #docker_requests.json_parser(docker_requests.create_container(path='/containers/create', method='POST', data=json_string))
+            print(docker_requests.create_container(path='/containers/create', method='POST', data=json_string))
+            
     elif args.start:
         container_name = args.start 
         docker_requests.start_container(container_name=container_name)

@@ -1,0 +1,10 @@
+{
+    "Image": "ubuntu",
+    "Cmd": ["mysqld"],
+    "Env": ["MYSQL_ROOT_PASSWORD=my-secret-pw"],
+    "HostConfig": {
+        "PortBindings": {
+            "3306/tcp": [{"HostPort": "3306"}]
+        }
+    }
+}
