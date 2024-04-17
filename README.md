@@ -8,7 +8,11 @@ SecDocker acts as an application firewall, monitoring and filtering Docker run c
 
 You will need to install [Docker](https://www.docker.com/get-started/)
 
-FireDocker can be run on Linux, MacOS, or on Windows with WSL. It can simply be run as described below on Linux or MacOS. To run on Windows, follow these instructions to set up WSL:
+FireDocker can be run on Linux, MacOS, or on Windows with Windows Subsystem for Linux (WSL). For Linux/MaxOS, skip to How to Clone. Follow the below instructions to set up WSL2 on Windows.
+
+### Windows Setup
+
+Further documentation can be found [here](https://learn.microsoft.com/en-us/windows/wsl/install).
 
 1. Install WSL:
 
@@ -26,17 +30,7 @@ Note: May need to clear return characters in script files in Windows using the f
 ```bash
 sudo sed -i 's/\r//' <path/to/scriptName>
 ```
-
-## How to Clone
-
-```bash
-    git clone https://github.com/racheljewell/FireDocker.git
-```
-
-## How to build/deploy
-
-Once Ubuntu installs for Windows or cloned for other machines, make sure Docker desktop is running.
-
+#### Enable environment and navigate to project directory
 In a new terminal:
 ```bash
     wsl --set-default ubuntu
@@ -50,11 +44,21 @@ To start Ubuntu:
 To get to where your clone is saved:
 
 ```bash
-    cd /mnt
+    cd /mnt/c
 ```
+
+
+## How to Clone
+
 ```bash
-    cd c
+    git clone https://github.com/racheljewell/FireDocker.git
 ```
+
+## How to build/deploy
+
+Once Ubuntu installs for Windows or cloned for other machines, make sure Docker desktop is running.
+
+
 
 Then cd to where your clone is
 
@@ -76,17 +80,17 @@ Enter your password
 
 ### To create a container
 
-Go to docker_requests.py and change the debug to "True" and save.
+(Go to docker_requests.py and change the debug to "True" and save.)**Until test .json files are created
 
 Then run 
 ```bash
-    python3 secdocker2.py --create
+    python3 secdocker2.py --create "/path/to/json_file.json"
 ```
-Change the debug to "False" and save.
+(Change the debug to "False" and save.)**Until test .json files are created
 
 To make sure the container was created: 
 ```bash
-    docker ps -a
+    python3 secdocker2.py --list
 ```
 You should see seven labels followed by your newly created container
 
@@ -94,7 +98,7 @@ You should see seven labels followed by your newly created container
 
 To see the name of your container:
 ```bash
-    docker ps -a
+    python3 secdocker2.py --list
 ```
 To start the container:
 ```bash
@@ -102,7 +106,7 @@ To start the container:
 ```
 To check if working as intended:
 ```bash
-    docker ps -a
+    python3 secdocker2.py --list
 ```
 The status section should say "UP" followed by how long it has been up for
 
@@ -110,7 +114,7 @@ The status section should say "UP" followed by how long it has been up for
 
 To see the name of your container:
 ```bash
-    docker ps -a
+    python3 secdocker2.py --list
 ```
 To stop the container:
 ```bash
@@ -118,7 +122,7 @@ To stop the container:
 ```
 To check if working as intended:
 ```bash
-    docker ps -a
+    python3 secdocker2.py --list
 ```
 The status section should say "Exited (0)" followed by how long ago it was exited
 
@@ -126,7 +130,7 @@ The status section should say "Exited (0)" followed by how long ago it was exite
 
 To see the name of your container:
 ```bash
-    docker ps -a
+    python3 secdocker2.py --list
 ```
 To rename the container:
 ```bash
@@ -134,7 +138,7 @@ To rename the container:
 ```
 To check if working as intended:
 ```bash
-    docker ps -a
+    python3 secdocker2.py --list
 ```
 Your container should now have the new name 
 
@@ -149,7 +153,7 @@ You should now see a list of your containers
 
 To see the name of your container:
 ```bash
-    docker ps -a
+    python3 secdocker2.py --list
 ```
 To delete the container:
 ```bash
@@ -157,6 +161,6 @@ To delete the container:
 ```
 To check if working as intended:
 ```bash
-    docker ps -a
+    python3 secdocker2.py --list
 ```
-Your container should no longer exist 
+Your container should be marked as deleted. 
