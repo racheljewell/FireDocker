@@ -77,7 +77,7 @@ To get to where your clone is saved:
 
 Then cd to where your clone is
 
-Establish a connection with Docker:
+Verifying a connection with Docker:
 
 ```bash
     docker
@@ -95,20 +95,18 @@ Enter your password
 
 ### To create a container
 
-Go to docker_requests.py and change the debug to "True" and save.
-
 Then run
 
 ```bash
-    python3 secdocker2.py --create
+    python3 secdocker2.py --create /path/to/jsonConfig
 ```
 
-Change the debug to "False" and save.
+NOTE: You must have the specified image type installed on your machine in order to create the image. This  can be done by searching for the image in Docker Desktop and pulling it.
 
 To make sure the container was created:
 
 ```bash
-    docker ps -a
+    python3 secdocker2.py --list
 ```
 
 You should see seven labels followed by your newly created container
@@ -118,7 +116,7 @@ You should see seven labels followed by your newly created container
 To see the name of your container:
 
 ```bash
-    docker ps -a
+    python3 secdocker2.py --list
 ```
 
 To start the container:
@@ -130,7 +128,7 @@ To start the container:
 To check if working as intended:
 
 ```bash
-    docker ps -a
+    python3 secdocker2.py --list
 ```
 
 The status section should say "UP" followed by how long it has been up for
@@ -140,7 +138,7 @@ The status section should say "UP" followed by how long it has been up for
 To see the name of your container:
 
 ```bash
-    docker ps -a
+    python3 secdocker2.py --list
 ```
 
 To stop the container:
@@ -152,7 +150,7 @@ To stop the container:
 To check if working as intended:
 
 ```bash
-    docker ps -a
+    python3 secdocker2.py --list
 ```
 
 The status section should say "Exited (0)" followed by how long ago it was exited
@@ -162,7 +160,7 @@ The status section should say "Exited (0)" followed by how long ago it was exite
 To see the name of your container:
 
 ```bash
-    docker ps -a
+    python3 secdocker2.py --list
 ```
 
 To rename the container:
@@ -174,7 +172,7 @@ To rename the container:
 To check if working as intended:
 
 ```bash
-    docker ps -a
+    python3 secdocker2.py --list
 ```
 
 Your container should now have the new name
@@ -192,7 +190,7 @@ You should now see a list of your containers
 To see the name of your container:
 
 ```bash
-    docker ps -a
+    python3 secdocker2.py --list
 ```
 
 To delete the container:
@@ -204,7 +202,7 @@ To delete the container:
 To check if working as intended:
 
 ```bash
-    docker ps -a
+    python3 secdocker2.py --list
 ```
 
 Your container should no longer exist
