@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-from logger import Logger
+from PythonFolder.logger import Logger
 
 class TestLogger(unittest.TestCase):
     @patch('logger.logging')
