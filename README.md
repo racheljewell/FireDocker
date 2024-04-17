@@ -74,7 +74,7 @@ Enter your password
 
 ## Functionality
 
-#### To create a container
+### To create a container
 
 Go to docker_requests.py and change the debug to "True" and save.
 
@@ -90,7 +90,7 @@ To make sure the container was created:
 ```
 You should see seven labels followed by your newly created container
 
-#### To start a container 
+### To start a container 
 
 To see the name of your container:
 ```bash
@@ -106,7 +106,7 @@ To check if working as intended:
 ```
 The status section should say "UP" followed by how long it has been up for
 
-#### To stop a container 
+### To stop a container 
 
 To see the name of your container:
 ```bash
@@ -122,7 +122,7 @@ To check if working as intended:
 ```
 The status section should say "Exited (0)" followed by how long ago it was exited
 
-#### To rename a container 
+### To rename a container 
 
 To see the name of your container:
 ```bash
@@ -138,14 +138,14 @@ To check if working as intended:
 ```
 Your container should now have the new name 
 
-#### To list out your containers
+### To list out your containers
 
 ```bash
     python3 secdocker2.py --list
 ```
 You should now see a list of your containers
 
-#### To delete a container 
+### To delete a container 
 
 To see the name of your container:
 ```bash
