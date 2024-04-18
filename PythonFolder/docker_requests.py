@@ -1,6 +1,8 @@
 import json
 import re
 import socket
+import docker
+import os
 
 debug = False
 
@@ -46,6 +48,40 @@ def create_container(path=None, method='GET', data=None):
     finally:
         # Close the socket
         sock.close()
+
+def create_image(json_data):
+    client = docker.from_env()
+    try:
+        image, cmd, env = json_data['Image'], json_data['Cmd'], json_data['Env']
+        
+        # Define a temporary Dockerfile content based on provided commands and environment variables
+        dockerfile_content = f"FROM {image}\nCMD {cmd}\nENV {env}"
+        
+        # Write the Dockerfile content to a temporary file
+        dockerfile_path = 'Dockerfile'
+        with open(dockerfile_path, 'w') as dockerfile:
+            dockerfile.write(dockerfile_content)
+        
+        # Build the image using the Dockerfile
+        build_result = client.images.build(path='.', tag=image, dockerfile=dockerfile_path)
+        
+        for build_log in build_result[1]:
+            print(build_log)
+        print(f"Image '{image}' created successfully.")
+    except KeyError:
+        print("Error: JSON format does not match expected structure for image creation.")
+    finally:
+        # Clean up: remove the temporary Dockerfile
+        if os.path.exists(dockerfile_path):
+            os.remove(dockerfile_path)
+
+def delete_image(image_name):
+    client = docker.from_env()
+    try:
+        client.images.remove(image=image_name)
+        print(f"Image '{image_name}' deleted successfully.")
+    except docker.errors.APIError as e:
+        print(f"Error deleting image '{image_name}': {e}")
 
 def delete_container(container_name):
     # Create a Unix domain socket
