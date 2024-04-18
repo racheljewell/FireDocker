@@ -1,7 +1,7 @@
 import json
 import os
 
-debug = True
+debug = False
 
 
 """
@@ -108,7 +108,7 @@ def restrict(jsonstr):
         before(json_a_result,json_b_result)
 
     remove_dict_elements(json_a_result, json_b_result)
-   
+    
     new_json = json_b_result
 
     if debug: 

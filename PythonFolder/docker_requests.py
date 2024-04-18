@@ -6,6 +6,9 @@ import PythonFolder.logger as logger
 
 debug = False
 
+class NoImageFound(Exception):
+    pass
+
 def create_container(path=None, method='GET', data=None):
     # Create a Unix domain socket
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
@@ -20,7 +23,14 @@ def create_container(path=None, method='GET', data=None):
         
         if data:
             data = json.dumps(config_parser.restrict(data))
-            print(data)
+
+            if "Image" not in data: 
+                if debug: 
+                    print(data)
+                
+                raise NoImageFound
+            
+           # print(data)
             request += f'Content-Length: {len(data)}\r\n'
             request += '\r\n'
             request += data
@@ -58,8 +68,12 @@ def create_container(path=None, method='GET', data=None):
 
         return response_data.decode()
     
+    except NoImageFound: 
+        print("Image Restricted")
+        return False
+    
     finally:
-        # Close the socket
+        # Close the socket before exiting the function entirely!
         sock.close()
 
 def delete_container(container_name):
