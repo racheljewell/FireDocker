@@ -5,9 +5,14 @@ import PythonFolder.docker_list as docker_list
 import PythonFolder.docker_requests as docker_requests
 
 def create_container(filepath):
-    json_data = load_json(filepath)
-    if json_data:
-        docker_requests.create_container(json_data)
+    json_string = "{}"
+    try:
+        with open(filepath, 'r') as file:
+            data = json.load(file)
+        json_string = json.dumps(data)
+    except:
+        print(f"Error: JSON file '{filepath}' does not exist.")
+    return json_string
 
 def create_image(filepath):
     json_data = load_json(filepath)
@@ -47,7 +52,9 @@ def main():
     args = parser.parse_args()
     
     if args.create:
-        create_container(args.create)
+        json_string = create_container(args.create)
+        docker_requests.json_parser(docker_requests.create_container(path='/containers/create', method='POST', data=json_string))
+        print(json_string)
     if args.create_image:
         create_image(args.create_image)
     elif args.delete_image:
