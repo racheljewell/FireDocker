@@ -2,11 +2,13 @@
 
 ## Description
 
-SecDocker acts as an application firewall, monitoring and filtering Docker run commands to prevent unauthorized or potentially harmful actions, thereby enhancing the security posture of CI environments without impeding development efficiency. We have updated the codebase to remove deprecated library features and implemented new ones, we have made better integration with the docker daemon and validated the YAML configurations.
+SecDocker acts as an application firewall, monitoring and filtering Docker commands to prevent unauthorized or potentially harmful actions, thereby enhancing the security posture of CI environments without impeding development efficiency. We have updated the codebase to remove deprecated library features and implemented new ones, we have made better integration with the docker daemon and validated the JSON config configurations.
+
+We focused on one of the main ideas of the paper: to restrict certain images from being used to create containers. 
 
 ## Research
 
-Our research is based on [SecDocker](https://doi.org/10.1007/s42979-021-00939-4) [1], a concept proposed by researchers at the University of León. The paper introduces SecDocker, a tool designed to enhance cybersecurity in Continuous Integration (CI) workflows by addressing security vulnerabilities inherent in Docker-based containerization. SecDocker acts as an application firewall, monitoring and filtering Docker run commands to prevent unauthorized or potentially harmful actions, thereby enhancing the security posture of CI environments without impeding development efficiency. SecDocker distinguishes itself through its modular, extensible architecture, crafted in Go.
+Our research is based on [SecDocker](https://doi.org/10.1007/s42979-021-00939-4) [1], a concept proposed by researchers at the University of León. The paper introduces SecDocker, a tool designed to enhance cybersecurity in Continuous Integration (CI) workflows by addressing security vulnerabilities inherent in Docker-based containerization. SecDocker acts as an application firewall, monitoring and filtering Docker commands to prevent unauthorized or potentially harmful actions, thereby enhancing the security posture of CI environments without impeding development efficiency. SecDocker distinguishes itself through its modular, extensible architecture, crafted in Go.
 
 SecDocker is presented as a possible solution to threats in CI pipelines by presenters at the [2023 USENIX Security Symposium](https://www.usenix.org/conference/usenixsecurity23/presentation/muralee) [2]. While the authors agree the work of SecDocker is promising, they report that it may require significant changes to existing CI infatstrucutre. However, these concepts could be build into new development pipelines.
 
@@ -14,7 +16,7 @@ SecDocker is presented as a possible solution to threats in CI pipelines by pres
 
 We ran into issues replicating the results of the original SecDocker researchers. First, several of the plugins used were outdated. This led to stability issues with TCP connections. We were also unable to receive any http responses or interact with Docker containers as described in the paper.
 
-We improved upon this by updating the codebase to function as originally intended. We opted to switch from Go to Python due to the extensive support for Python within the Docker community. The packages we used are up-to-date and are able to interact with the Docker API as expected. We are able to evaluate Docker contain creation requests. If they are found to be valid, the containers can be created. If they do not meet specifications, creation will be denied.
+We improved upon this by updating the codebase to function as a command line tool focusing on restricting container creation. We opted to switch from Go to Python due to the extensive support for Python within the Docker community. The packages we used are up-to-date and are able to interact with the Docker API as expected. We are able to evaluate Docker contain creation requests. If they are found to be valid, the containers can be created. If they do not meet specifications, creation will be denied.
 
 [1] D. Fernández González, F. J. Rodríguez Lera, G. Esteban, and C. Fernández Llamas, "SecDocker: Hardening the Continuous Integration Workflow," SN Computer Science, vol. 3, no. 1, p. 80, Nov. 2021. [Online]. Available: <https://doi.org/10.1007/s42979-021-00939-4>
 
