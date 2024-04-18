@@ -4,3 +4,22 @@
 2024-04-16 14:49:13,873 - WARNING - Unknown error code: 999 - 
 2024-04-16 14:49:13,873 - INFO - This is a general information message.
 2024-04-16 14:49:13,873 - ERROR - This is a general error message.
+2024-04-17 14:40:09,135 - WARNING - Unknown error code: 400 - 
+2024-04-17 14:41:23,295 - ERROR - Bad parameter - a provided parameter is incorrect. 
+2024-04-17 14:43:56,879 - ERROR - Bad parameter - a provided parameter is incorrect. 
+2024-04-17 14:44:42,249 - INFO - No error - operation successful.
+2024-04-17 14:46:43,365 - ERROR - Bad parameter - a provided parameter is incorrect. Error Creating Container
+2024-04-17 14:47:13,394 - ERROR - Bad parameter - a provided parameter is incorrect. Creating Container
+2024-04-17 14:50:36,625 - INFO - No error - operation successful. Creating Container
+2024-04-17 14:52:12,204 - ERROR - No such image - specified Docker image does not exist. Deleting Container
+2024-04-17 14:53:18,167 - WARNING - Unknown error code: 204 - Deleting Container
+2024-04-17 14:55:25,177 - WARNING - Unknown error code: 204 - Deleting Container
+2024-04-17 14:56:11,092 - INFO - No error - operation successful. Deleting Container
+2024-04-17 14:59:22,529 - WARNING - Unhandled error code: 304 - Stopping Container
+2024-04-17 14:59:45,206 - ERROR - Docker image already stopped. Stopping Container
+2024-04-17 14:59:59,588 - INFO - No error - operation successful. Stopping Container
+2024-04-17 15:01:17,215 - INFO - No error - operation successful. Starting Container
+2024-04-17 15:01:23,704 - ERROR - Docker image already stopped. Starting Container
+2024-04-17 15:02:41,716 - ERROR - Docker image already in requested state. Starting Container
+2024-04-17 15:03:54,870 - ERROR - No such image - specified Docker image does not exist. Starting Container
+2024-04-17 15:04:25,262 - INFO - No error - operation successful. Renaming Container
