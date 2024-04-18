@@ -23,3 +23,13 @@
 2024-04-17 15:02:41,716 - ERROR - Docker image already in requested state. Starting Container
 2024-04-17 15:03:54,870 - ERROR - No such image - specified Docker image does not exist. Starting Container
 2024-04-17 15:04:25,262 - INFO - No error - operation successful. Renaming Container
+2024-04-17 23:41:15,884 - INFO - No error - operation successful. Creating Container
+2024-04-17 23:41:42,063 - INFO - No error - operation successful. Starting Container
+2024-04-17 23:41:43,418 - ERROR - Docker image already in requested state. Starting Container
+2024-04-17 23:41:44,614 - ERROR - Docker image already in requested state. Starting Container
+2024-04-17 23:41:45,160 - ERROR - Docker image already in requested state. Starting Container
+2024-04-17 23:41:45,563 - ERROR - Docker image already in requested state. Starting Container
+2024-04-17 23:42:03,388 - INFO - No error - operation successful. Stopping Container
+2024-04-17 23:43:23,392 - INFO - No error - operation successful. Renaming Container
+2024-04-17 23:43:36,259 - INFO - No error - operation successful. Deleting Container
+2024-04-17 23:58:56,628 - INFO - No error - operation successful. Creating Container

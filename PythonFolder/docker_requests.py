@@ -162,6 +162,10 @@ def start_container(container_name):
         statusCode = int(headers[9:12])
         log = logger.Logger()
         log.log_message(statusCode, "Starting Container")
+
+        if statusCode == 304: 
+            print("\033[31mDocker image already in requested state.\033[0m")
+        
         return response_data
     
     finally:
