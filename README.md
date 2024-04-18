@@ -206,10 +206,13 @@ To delete the container:
     firedocker --delete "<name of your container>"
 ```
 
-To check if working as intended:
+### 
 
 ```bash
     firedocker --list
 ```
 
 Your container should no longer exist
+
+### Testing
+There are two json file in the json folder that can be used to test the create function against. The mysql json file should create a container if passed with the create command and a user has the mysql image downloaded. In addition the ubuntu json file is restricted via the restricition json config and should output Image Restricted 
