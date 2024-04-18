@@ -10,7 +10,7 @@ def create_container(filepath):
         with open(filepath, 'r') as file:
             data = json.load(file)
         json_string = json.dumps(data)
-    except:
+    except FileNotFoundError:
         print(f"Error: JSON file '{filepath}' does not exist.")
     return json_string
 
@@ -38,7 +38,7 @@ def list_images_and_containers():
     docker_list.docker_list_containers("/v1.40/containers/json?all=1")
 
 def main():
-    parser = argparse.ArgumentParser(description='Example script with multiple required arguments')
+    parser = argparse.ArgumentParser(description='Create a Docker container from a JSON file')
     
     parser.add_argument('--create', help='Create a container with JSON file', metavar='JSON_PATH') 
     parser.add_argument('--create-image', help='Create an image with JSON file', metavar='JSON_PATH') 
@@ -56,7 +56,7 @@ def main():
         json_string = create_container(args.create)
         docker_requests.json_parser(docker_requests.create_container(path='/containers/create', method='POST', data=json_string))
         print(json_string)
-
+        return
     if args.create_image:
         create_image(args.create_image)
     elif args.delete_image:
