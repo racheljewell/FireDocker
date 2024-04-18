@@ -4,6 +4,8 @@ import socket
 import docker
 import os
 
+import PythonFolder.logger as logger
+
 debug = False
 
 def create_container(path=None, method='GET', data=None):

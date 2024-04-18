@@ -23,3 +23,11 @@
 2024-04-17 15:02:41,716 - ERROR - Docker image already in requested state. Starting Container
 2024-04-17 15:03:54,870 - ERROR - No such image - specified Docker image does not exist. Starting Container
 2024-04-17 15:04:25,262 - INFO - No error - operation successful. Renaming Container
+2024-04-17 23:17:28,949 - ERROR - No such image - specified Docker image does not exist. Creating Container
+2024-04-17 23:19:30,769 - ERROR - No such image - specified Docker image does not exist. Creating Container
+2024-04-17 23:22:01,518 - INFO - No error - operation successful. Creating Container
+2024-04-17 23:25:13,969 - ERROR - Bad parameter - a provided parameter is incorrect. Creating Container
+2024-04-17 23:25:54,300 - ERROR - Bad parameter - a provided parameter is incorrect. Creating Container
+2024-04-17 23:26:18,325 - INFO - No error - operation successful. Creating Container
+2024-04-17 23:30:34,464 - INFO - No error - operation successful. Creating Container
+2024-04-17 23:34:36,366 - INFO - No error - operation successful. Creating Container

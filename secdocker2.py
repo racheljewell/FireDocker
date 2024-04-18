@@ -52,9 +52,11 @@ def main():
     args = parser.parse_args()
     
     if args.create:
+        print(f"Creating container using JSON file: {args.create}")
         json_string = create_container(args.create)
         docker_requests.json_parser(docker_requests.create_container(path='/containers/create', method='POST', data=json_string))
         print(json_string)
+
     if args.create_image:
         create_image(args.create_image)
     elif args.delete_image:
