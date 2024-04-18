@@ -49,7 +49,7 @@ sudo sed -i 's/\r//' <path/to/scriptName>
     git clone https://github.com/racheljewell/FireDocker.git
 ```
 
-## How to build/deploy
+## How to build/deploy (Windows)
 
 Once Ubuntu installs for Windows or cloned for other machines, make sure Docker desktop is running.
 
@@ -65,31 +65,28 @@ To start Ubuntu:
     wsl
 ```
 
-To get to where your clone is saved:
+Clone the FireDocker Repo with: 
 
 ```bash
-    cd /mnt
+    git clone https://github.com/racheljewell/FireDocker.git
 ```
 
 ```bash
-    cd c
+    cd FireDocker
 ```
 
-Then cd to where your clone is
+# Run the script setup.sh 
 
-Verifying a connection with Docker:
+```bash
+    sudo bash setup.sh
+```
+
+# Verifying a connection with Docker:
 
 ```bash
     docker
 ```
 
-To create an empty container:
-
-```bash
-    sudo python3 secdocker2.py --create config_test.json
-```
-
-Enter your password
 
 ## Functionality
 
@@ -98,15 +95,15 @@ Enter your password
 Then run
 
 ```bash
-    python3 secdocker2.py --create /path/to/jsonConfig
+    firedocker --create <path to json config>
 ```
 
-NOTE: You must have the specified image type installed on your machine in order to create the image. This  can be done by searching for the image in Docker Desktop and pulling it.
+NOTE: You must have the specified image type installed on your machine in order to create the image. This  can be done by searching for the image in Docker Desktop and pulling it. See Docker API for examples of how to create json with image and other key value pairs. 
 
 To make sure the container was created:
 
 ```bash
-    python3 secdocker2.py --list
+    firedocker --list
 ```
 
 You should see seven labels followed by your newly created container
@@ -116,19 +113,19 @@ You should see seven labels followed by your newly created container
 To see the name of your container:
 
 ```bash
-    python3 secdocker2.py --list
+    firedocker --list
 ```
 
 To start the container:
 
 ```bash
-    python3 secdocker2.py --start "<name of your container>"
+    firedocker --start "<name of your container>"
 ```
 
 To check if working as intended:
 
 ```bash
-    python3 secdocker2.py --list
+    firedocker --list
 ```
 
 The status section should say "UP" followed by how long it has been up for
@@ -138,19 +135,19 @@ The status section should say "UP" followed by how long it has been up for
 To see the name of your container:
 
 ```bash
-    python3 secdocker2.py --list
+    firedocker --list
 ```
 
 To stop the container:
 
 ```bash
-    python3 secdocker2.py --stop "<name of your container>"
+    firedocker --stop "<name of your container>"
 ```
 
 To check if working as intended:
 
 ```bash
-    python3 secdocker2.py --list
+    firedocker --list
 ```
 
 The status section should say "Exited (0)" followed by how long ago it was exited
@@ -160,19 +157,19 @@ The status section should say "Exited (0)" followed by how long ago it was exite
 To see the name of your container:
 
 ```bash
-    python3 secdocker2.py --list
+    firedocker --list
 ```
 
 To rename the container:
 
 ```bash
-    python3 secdocker2.py --rename "<name of your container>" "<name you want to rename it to>"
+    firedocker --rename "<name of your container>" "<name you want to rename it to>"
 ```
 
 To check if working as intended:
 
 ```bash
-    python3 secdocker2.py --list
+    firedocker --list
 ```
 
 Your container should now have the new name
@@ -180,7 +177,7 @@ Your container should now have the new name
 ### To list out your containers
 
 ```bash
-    python3 secdocker2.py --list
+    firedocker --list
 ```
 
 You should now see a list of your containers
@@ -190,19 +187,19 @@ You should now see a list of your containers
 To see the name of your container:
 
 ```bash
-    python3 secdocker2.py --list
+    firedocker --list
 ```
 
 To delete the container:
 
 ```bash
-    python3 secdocker2.py --delete "<name of your container>"
+    firedocker --delete "<name of your container>"
 ```
 
 To check if working as intended:
 
 ```bash
-    python3 secdocker2.py --list
+    firedocker --list
 ```
 
 Your container should no longer exist
