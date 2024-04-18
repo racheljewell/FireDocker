@@ -92,6 +92,14 @@ Clone the FireDocker Repo with:
 
 ## Functionality
 
+### Help Command
+
+Displays helpful hints on each of the commands. 
+
+```bash
+    firedocker --help
+```
+
 ### To create a container
 
 Then run
