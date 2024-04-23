@@ -55,10 +55,10 @@ def main():
             
     elif args.start:
         container_name = args.start 
-        docker_requests.start_container(container_name=container_name)
+        docker_requests.start_container(path='/containers/', method='POST',container_name=container_name)
     elif args.stop:
         container_name = args.stop
-        docker_requests.stop_container(container_name=container_name)
+        docker_requests.stop_container(path='/containers/', method='POST',container_name=container_name)
         # Implement container stoppage
     elif args.rename:
         old_container_name, new_container_name = args.rename
@@ -66,7 +66,7 @@ def main():
         # Implement container renamage
     elif args.delete:
         container_name = args.delete
-        docker_requests.delete_container(container_name=container_name)
+        docker_requests.delete_container(path='/containers/create', method='DELETE',container_name=container_name)
         # Implement container deletage
     elif args.list:
         docker_list.docker_list("/v1.40/containers/json?all=1")

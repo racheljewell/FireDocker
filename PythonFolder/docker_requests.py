@@ -9,7 +9,42 @@ debug = False
 class NoImageFound(Exception):
     pass
 
-def create_container(path=None, method='GET', data=None):
+
+"""
+All functions should reformat to 
+- send path
+- send data
+- method should be defaulted 
+
+- use the build request function to build the request
+
+"""
+"""
+This is where the oop stuff comes in? 
+
+instead of passing parameters, pass objects that contain the
+params you want 
+
+like a reqeust object that you can get request.path or request.method 
+from
+
+and each request will have an obj? 
+
+but if each has the obj
+
+where do you build them? : the constructor? 
+and then call methods like build request? 
+
+so does each requst inheiret some superclass like requests
+
+"""
+
+def buildRequest(path=None, method='GET', data=None): 
+    request = f'{method} {path} HTTP/1.1\r\n'
+    request += 'Host: unix\r\n'
+    request += 'Content-Type: application/json\r\n'
+
+def create_container(path='/containers/create', method='POST', data=""):
     # Create a Unix domain socket
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     try:
@@ -76,7 +111,7 @@ def create_container(path=None, method='GET', data=None):
         # Close the socket before exiting the function entirely!
         sock.close()
 
-def delete_container(container_name):
+def delete_container(path='/containers/', method='DELETE',container_name=""):
     # Create a Unix domain socket
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     try:
@@ -114,7 +149,7 @@ def delete_container(container_name):
         # Close the socket
         sock.close()
 
-def stop_container(container_name):
+def stop_container(path='/containers/', method='POST',container_name=""):
     # Create a Unix domain socket
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     try:
@@ -152,7 +187,7 @@ def stop_container(container_name):
         # Close the socket
         sock.close()
 
-def start_container(container_name):
+def start_container(path='/containers/', method='POST',container_name=""):
     # Create a Unix domain socket
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     try:
@@ -194,7 +229,7 @@ def start_container(container_name):
         # Close the socket
         sock.close()
 
-def rename_container(old_container_name, new_container_name):
+def rename_container(old_container_name="", new_container_name=""):
     # Create a Unix domain socket
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     try:
@@ -232,7 +267,6 @@ def rename_container(old_container_name, new_container_name):
     finally:
         # Close the socket
         sock.close()
-
 
 def json_parser(strContaingJson): 
     match = re.search(r'\{(.+?)\}', strContaingJson, re.DOTALL)
